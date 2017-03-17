@@ -577,7 +577,7 @@ def traffic_net_v2(x, keep_probability, activation='relu'):
 
 
 # 3x3 cv2, cv3 kernel, valid padding, no dropout
-def traffic_net_v2_full_dropout(x, keep_probability, activation='relu'):
+def traffic_net_v2_full_dropout(x, keep_probability, output_count, activation='relu'):
     kernel_size = [5, 5]
     kernel_strides = [1, 1]
     pool_k_size = [2, 2]
@@ -622,7 +622,7 @@ def traffic_net_v2_full_dropout(x, keep_probability, activation='relu'):
                                            activation=activation)
 
     output, ow = cnnl.fully_connected_layer(x_tensor=fc2,
-                                            num_outputs=43,
+                                            num_outputs=output_count,
                                             output=True)
 
     print(x)
